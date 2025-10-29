@@ -46,25 +46,68 @@
     };
 
     macros {
-        US_to_JIS_colon: to_layer_0 {
+        US_colon: to_layer_0 {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp SINGLE_QUOTE>;
             label = "TO_LAYER_0";
         };
 
-        US_to_JIS_EQUAL: US_to_JIS_Underbar {
+        US_EQUAL: US_to_JIS_Underbar {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp UNDER>;
             label = "US_TO_JIS_UNDERBAR";
         };
 
-        US_to_JIS_AMPERSAND: US_to_JIS_AMPERSAND {
+        US_AMPERSAND: US_to_JIS_AMPERSAND {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp CARET>;
             label = "US_TO_JIS_AMPERSAND";
+        };
+
+        US_plus: US_plus {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp COLON>;
+            label = "US_PLUS";
+        };
+
+        US_ASTERISK: US_ASTERISK {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp DOUBLE_QUOTES>;
+            label = "US_ASTERISK";
+        };
+
+        US_AT: US_AT {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_BRACKET>;
+            label = "US_AT";
+        };
+
+        US_LPAREN: US_LPAREN {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp ASTERISK>;
+            label = "US_LPAREN";
+        };
+
+        US_RPAREN: US_RPAREN {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LEFT_PARENTHESIS>;
+            label = "US_RPAREN";
+        };
+
+        new_macro: new_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&none>, <&macro_press>;
+
+            label = "NEW_MACRO";
         };
     };
 
@@ -72,7 +115,7 @@
         lt_to_layer_0: lt_to_layer_0 {
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_TO_0";
-            bindings = <&mo>, <&US_to_JIS_colon>;
+            bindings = <&mo>, <&US_colon>;
 
             #binding-cells = <2>;
             tapping-term-ms = <200>;
@@ -101,9 +144,9 @@
         default_layer {
             bindings = <
 &kp Q             &kp W         &kp E         &kp R             &kp T                                                              &kp Y        &kp U  &lt 5 I    &kp O    &kp P
-&kp A             &kp S         &kp D         &kp F             &kp G                                  &kp COLON                   &kp H        &kp J  &kp K      &kp L    &kp MINUS
+&kp A             &kp S         &kp D         &kp F             &kp G                                  &US_colon                   &kp H        &kp J  &kp K      &kp L    &kp MINUS
 &mt LEFT_SHIFT Z  &kp X         &kp C         &kp V             &kp B        &lt 4 TAB                 &kp SEMI                    &kp N        &kp M  &kp COMMA  &kp DOT  &kp SLASH
-&kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT  &lt 1 LANGUAGE_1  &lt 2 SPACE  &lt_to_layer_0 3 LANG2    &lt_to_layer_0 3 BACKSPACE  &lt 1 ENTER                             &kp ESC
+&kp LCTRL         &kp LEFT_WIN  &kp LEFT_ALT  &lt 1 LANGUAGE_1  &lt 2 SPACE  &lt_to_layer_0 3 LANG2    &lt_to_layer_0 3 BACKSPACE  &lt 1 ENTER                             &kp BACKSPACE
             >;
 
             sensor-bindings = <&scroll_up_down>;
@@ -111,9 +154,9 @@
 
         layer_1 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                             &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp MINUS  &kp ASTERISK
-&trans  &trans  &trans  &trans  &trans            &trans           &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp PLUS   &kp SLASH
-&trans  &trans  &trans  &trans  &trans  &trans    &kp KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_N2        &kp KP_NUMBER_3  &kp EQUAL  &kp PERIOD
+&trans  &trans  &trans  &trans  &trans                             &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp MINUS  &US_ASTERISK
+&trans  &trans  &trans  &trans  &trans            &trans           &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &US_plus   &kp SLASH
+&trans  &trans  &trans  &trans  &trans  &trans    &kp KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_N2        &kp KP_NUMBER_3  &US_EQUAL  &kp PERIOD
 &trans  &trans  &trans  &trans  &trans  &trans    &trans           &trans                                                        &trans
             >;
 
@@ -122,10 +165,10 @@
 
         layer_2 {
             bindings = <
-&kp EXCLAMATION  &kp N7        &kp N8        &kp N9        &kp MINUS                                  &kp QUESTION   &kp EXCLAMATION   &kp TILDE       &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS
-&kp GRAVE        &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp PLUS                 &US_to_JIS_colon  &kp SLASH      &kp AT_SIGN       &kp HASH        &US_to_JIS_AMPERSAND  &kp COLON
-&kp N0           &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp N0     &kp PERIOD    &kp F12           &kp LESS_THAN  &kp GREATER_THAN  &kp LEFT_BRACE  &kp RIGHT_BRACE       &kp BACKSLASH
-&trans           &trans        &trans        &trans        &trans     &trans        &trans            &trans                                                                 &kp PIPE
+&kp EXCLAMATION  &kp N7        &kp N8        &kp N9        &kp MINUS                           &kp QUESTION   &kp EXCLAMATION   &kp TILDE       &US_LPAREN       &US_RPAREN
+&kp GRAVE        &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp PLUS                 &US_colon  &kp SLASH      &US_AT            &kp HASH        &US_AMPERSAND    &kp COLON
+&kp N0           &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp N0     &kp PERIOD    &kp F12    &kp LESS_THAN  &kp GREATER_THAN  &kp LEFT_BRACE  &kp RIGHT_BRACE  &kp BACKSLASH
+&trans           &trans        &trans        &trans        &trans     &trans        &trans     &trans                                                            &kp PIPE
             >;
 
             sensor-bindings = <&scroll_up_down>;
@@ -139,7 +182,7 @@
 &trans          &trans           &trans                  &trans               &trans   &trans    &trans  &trans                                &trans
             >;
 
-            sensor-bindings = <&scroll_right_left>;
+            sensor-bindings = <&inc_dec_kp TAB LS(TAB)>;
         };
 
         layer_4 {
