@@ -182,7 +182,7 @@
 &trans          &trans           &trans                  &trans               &trans   &trans    &trans  &trans                                &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp TAB LS(TAB)>;
+            sensor-bindings = <&inc_dec_kp LS(TAB) TAB>;
         };
 
         layer_4 {
