@@ -10,6 +10,14 @@
 #define MOUSE 5
 #define SCROLL 6
 
+/ {
+    /omit-if-no-ref/ zip_temp_layer: zip_temp_layer {
+        compatible = "zmk,input-processor-temp-layer";
+        #input-processor-cells = <2>;
+        require-prior-idle-ms = <500>;   // ← 非マウスキー後0.5秒はAMLを起動しない
+    };
+};
+
 &mt {
     flavor = "balanced";
     quick-tap-ms = <0>;
