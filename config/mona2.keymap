@@ -31,19 +31,7 @@
 };
 
 / {
-    combos {
-        compatible = "zmk,combos";
-
-        layer4_ESC {
-            bindings = <&lt 4 ESC>;
-            key-positions = <39 38>;
-        };
-
-        tab {
-            bindings = <&kp TAB>;
-            key-positions = <11 12>;
-        };
-    };
+    combos { compatible = "zmk,combos"; };
 
     macros {
         US_colon: to_layer_0 {
@@ -155,7 +143,7 @@
         layer_1 {
             bindings = <
 &trans  &trans  &trans  &trans  &trans                             &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp MINUS  &US_ASTERISK
-&trans  &trans  &trans  &trans  &trans            &trans           &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &US_plus   &kp SLASH
+&trans  &trans  &trans  &trans  &trans            &kp KP_NUMLOCK   &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &US_plus   &kp SLASH
 &trans  &trans  &trans  &trans  &trans  &trans    &kp KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_N2        &kp KP_NUMBER_3  &US_EQUAL  &kp PERIOD
 &trans  &trans  &trans  &trans  &trans  &trans    &trans           &trans                                                        &trans
             >;
